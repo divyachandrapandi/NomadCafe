@@ -2,3 +2,6 @@ Bootstrap
 
 Flask Bootstrap
 https://pythonhosted.org/Flask-Bootstrap/basic-usage.html
+
+Flask WTFORMS
+https://www.digitalocean.com/community/tutorials/how-to-use-and-validate-web-forms-with-flask-wtf
