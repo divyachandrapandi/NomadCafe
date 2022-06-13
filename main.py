@@ -23,29 +23,29 @@ def home():
 def all_cafe():
     #use databse query all
     return render_template('all.html')
-
-
-@app.route('/cafe/<cafe-id::int>')
-def show_cafe():
-    return render_template('cafe.html')
-@app.route('/add')
-def add_cafe():
-    #use wtforms to add post request for add in db
-    return render_template('make.html')
-
-@app.route('/update/<cafe-id::int>')
-def update():
-    #from update button clicked in  cafe htmlredirected to add html but refractor title as edit also use ckeditor
-    # to load and fill automatically the previuos version od cafe details in reapective place
-    return render_template('make.html')
-
-@app.route('register')
-def register():
-    return render_template('register.html')
-
-@app.route('login')
-def login():
-    return render_template('login.html')
+#
+#
+# @app.route('/cafe/<cafe-id::int>')
+# def show_cafe():
+#     return render_template('cafe.html')
+# @app.route('/add')
+# def add_cafe():
+#     #use wtforms to add post request for add in db
+#     return render_template('make.html')
+#
+# @app.route('/update/<cafe-id::int>')
+# def update():
+#     #from update button clicked in  cafe htmlredirected to add html but refractor title as edit also use ckeditor
+#     # to load and fill automatically the previuos version od cafe details in reapective place
+#     return render_template('make.html')
+#
+# @app.route('register')
+# def register():
+#     return render_template('register.html')
+#
+# @app.route('login')
+# def login():
+#     return render_template('login.html')
 
 
 if __name__ == "__main__":
