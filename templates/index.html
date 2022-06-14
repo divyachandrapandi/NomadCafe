@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Nomad Cafe</title>
-</head>
-<body>
+{%extends "base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{%block content%}
+<h1>Welcome {{name}}</h1>
+
 <h1>Welcome to Nomad Cafe</h1>
 
-</div>
+<h2><a href="{{url_for('all_cafe')}}">Show all cafes</a></h2>
+<h3><a href="{{url_for('add_cafe')}}">Add cafe</a></h3>
 
-
-
-
-</body>
-</html>
+{%endblock%}

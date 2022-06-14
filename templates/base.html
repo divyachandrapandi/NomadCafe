@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
+    <style>
+        nav a {
+            color: #d64161;
+            font-size: 3em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar-end">
+    <a href="{{ url_for('home') }}" class="navbar-item">
+        Home
+    </a>
+
+    {% if not current_user.is_authenticated %}
+    <a href="{{ url_for('login') }}" class="navbar-item">
+        Login
+    </a>
+    <a href="{{ url_for('register') }}" class="navbar-item">
+        Register
+    </a>
+    {% endif %}
+    {% if current_user.is_authenticated %}
+    <a href="{{ url_for('logout') }}" class="navbar-item">
+        Logout
+    </a>
+    {% endif %}
+
+</div>
+    <nav>
+        <a href="{{ url_for('home') }}">FlaskApp</a>
+
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>

@@ -3,5 +3,11 @@ Bootstrap
 Flask Bootstrap
 https://pythonhosted.org/Flask-Bootstrap/basic-usage.html
 
+API BUILT:
+1. _________________GET  ALL  CAFES --------------------------
+
 Flask WTFORMS
 https://www.digitalocean.com/community/tutorials/how-to-use-and-validate-web-forms-with-flask-wtf
+
+FLASK LOGIN
+https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login

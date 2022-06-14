@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{%extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 
-</body>
-</html>
+{% block title %}Register {% endblock %}
+
+{%block content%}
+
+{{wtf.quick_form(form, novalidate=True)}}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="notification container">
+        {{ messages[0] }}. Go to <a href="{{ url_for('login') }}">login page</a>.
+    </div>
+{% endif %}
+{% endwith %}
+
+{%endblock%}

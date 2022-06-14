@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %} cafe{% endblock %}
+{%block content%}
 
-</body>
-</html>
+<div class="container" style="background-color:yellow; font-size:1.5rem; border:5px solid black; margin:5px 25px;">
+
+    <h4> {{cafe.id}}CAFE NAME:{{cafe.name}}</h4>
+    <h6>cafe map location: {{cafe.map_url}}</h6>
+    <h6>cafe location: {{cafe.location}}</h6>
+    <h6>cafe image {{cafe.img_url}}</h6>
+    <h6>cafe has sockets {{cafe.has_sockets}}</h6>
+    <h6>cafe allow take calls: {{cafe.can_take_calls}}</h6>
+    <h6>cafe has wifi: {{cafe.has_wifi}}</h6>
+    <h6>cafe has toilet: {{cafe.has_toilet}}</h6>
+    <h6>coffee price: {{cafe.coffee_price}}</h6>
+    <h6>seats: {{cafe.seats}}</h6>
+
+</div>
+<a href="{{url_for('update', cafe_id=cafe.id)}}">Update details</a>
+
+<br><br>
+<a href="{{url_for('delete',cafe_id=cafe.id)}}"> Delete cafe </a>
+{%endblock%}

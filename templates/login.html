@@ -1,0 +1,50 @@
+{%extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{%block title%} Welcome Login page{%endblock%}
+
+{% block content %}
+<div class="container">
+    <h1>Login</h1>
+    {{ wtf.quick_form(form) }}
+
+</div>
+<div class="field" style="margin-left:50px;">
+
+    <input type="checkbox" name="remember">
+    <label>
+        Remember me
+    </label>
+</div>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="notification is-danger">
+    {{ messages[0] }}
+</div>
+{% endif %}
+{% endwith %}
+
+{%endblock%}
+<!--	</body>-->
+<!--</html>-->
+
+<!--			<form method="post">-->
+<!--				{{form.csrf_token}}-->
+<!--				<p>-->
+<!--         		   {{ form.email.label }}-->
+<!--         		   {{ form.email(size=15) }}-->
+<!--        		</p>-->
+<!--				<br>-->
+<!--				<p>-->
+<!--         		   {{ form.password.label }}-->
+<!--         		   {{ form.password(size=15) }}-->
+<!--        		</p>-->
+
+<!--				<p>-->
+<!--					{{form.submit}}-->
+<!--&lt;!&ndash;            		<input type="submit" value="LogIn">&ndash;&gt;-->
+<!--       			 </p>-->
+<!--			</form>-->
+<!--			action="{{ url_for('loginpage')}}" -->
+<!-- This is where our form will go. -->

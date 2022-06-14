@@ -1,20 +1,20 @@
-{% extends 'bootstrap/base.html' %}
-
-{% block title %}Nomadcafe{% endblock %}
-{% block styles %}
-    {{super()}}
-    <link rel="stylesheet" type='text/css' href="{{url_for('static', filename='styles.css')}}">
-{% endblock %}
+{% extends 'base.html' %}
 {%block content%}
 <h1>All cafes</h1>
-<div class="container" style="background-color:yellow;">
-    <h4> cafe_name</h4>
-    <h6>cafe location</h6>
-    <h6>cafe image</h6>
-    <h6>cafe has sockets</h6>
+{%for cafe in cafes:%}
+<div class="container" style="background-color:yellow; font-size:1.5rem; border:5px solid black; margin:5px 25px;">
 
-    <h6>cafe has wifi</h6>
-    <h6>cafe has toilet</h6>
-    <h6>cofee price</h6>
+    <h4> {{cafe.id}}CAFE NAME: <a href="{{url_for('show_cafe', cafe_id = cafe.id)}}">{{cafe.name}}</a></h4>
+    <h6>cafe map location: {{cafe.map_url}}</h6>
+    <h6>cafe location: {{cafe.location}}</h6>
+    <h6>cafe image {{cafe.img_url}}</h6>
+    <h6>cafe has sockets {{cafe.has_sockets}}</h6>
+    <h6>cafe allow take calls: {{cafe.can_take_calls}}</h6>
+    <h6>cafe has wifi: {{cafe.has_wifi}}</h6>
+    <h6>cafe has toilet: {{cafe.has_toilet}}</h6>
+    <h6>coffee price: {{cafe.coffee_price}}</h6>
+    <h6>seats: {{cafe.seats}}</h6>
+
 </div>
-{% endblock %}
+  {%endfor%}
+{%endblock%}
