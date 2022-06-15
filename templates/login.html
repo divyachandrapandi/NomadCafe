@@ -1,9 +1,15 @@
-{%extends "bootstrap/base.html" %}
+{%extends "base.html" %}
+
 {% import "bootstrap/wtf.html" as wtf %}
 
 {%block title%} Welcome Login page{%endblock%}
 
 {% block content %}
+
+ <nav>
+        <a href="{{ url_for('home') }}">FlaskApp</a>
+
+    </nav>
 <div class="container">
     <h1>Login</h1>
     {{ wtf.quick_form(form) }}
