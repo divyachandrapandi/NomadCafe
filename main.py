@@ -242,6 +242,6 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(host="192.168.68.101", port=5000, debug=True)
+    app.run(host="192.168.68.104", port=5000, debug=True)
 
     # flash wrong url, cafe deleted cafe updated, registered, logout login
