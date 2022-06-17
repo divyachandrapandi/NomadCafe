@@ -1,13 +1,80 @@
 {%extends "base.html" %}
+{%block head%}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
 
+    {%endblock%}
 {% block title %} Home {% endblock %}
 
+
 {%block content%}
-<h1>Welcome {{name}}</h1>
+<div class="title-section">
 
-<h1>Welcome to Nomad Cafe</h1>
+    <div class="heading container">
+          <h1>Nomad Cafe</h1>
+          <h6>Nearby Cafes for digital Nomads for their work facility</h6>
+          <h6>Group meeting for active talk at your convenience</h6>
+          <a href="{{url_for('all_cafe', page_num=1)}}">
+              <button type="button" class="explore-btn btn btn-warning">Explore Cafe</button></a>
+    </div>
+</div>
 
-<h2><a href="{{url_for('all_cafe')}}">Show all cafes</a></h2>
-<h3><a href="{{url_for('add_cafe')}}">Add cafe</a></h3>
+<div class="feature-section container-fluid">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 features-col">
+            <i class="feature-icon fa-solid fa-laptop"></i>
+            <h3>BE CONNECTED</h3>
+            <p>Find venues for team meeting with comfy seating areas also speedy wifi, power sockets.</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 features-col">
+            <i class="feature-icon fa-solid fa-wifi"></i>
+            <h3>FEEL WELCOME</h3>
+            <p>Discover the best times to work, based on community area.</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 features-col">
+            <i class="feature-icon fa-solid fa-people-group"></i>
+            <h3>STAY INSPIRED</h3>
+            <p>Uncover new places with laid-back ambiance, and friendly vibes.</p>
+        </div>
+    </div>
+</div>
 
+<div class="testimonial-section container-fluid">
+    <h1>Testimonials</h1>
+    <div class="testimonial-card">
+        <article class="testimonial" id="card1" style="background-color:#ada4db;">
+            <h4>John Sturgis</h4>
+            <h6>CEO & Founder - ABC Company</h6>
+            <p>"LaptopFriendly is an awesome service for finding places to get your work done. The crew helped me
+                discover some hidden gems all over the city!"</p>
+        </article>
+        <article class="testimonial" id="card2" style="background-color:#1c1a27; color:white;">
+            <h4>Sheldon Cooper</h4>
+            <h6>Media Manager - ABC Company</h6>
+            <p>"It enabled me to find great places to work from and meet new like-minded people. I love the
+                flexibility and the offers at each spot, thanks for making this!"</p>
+        </article>
+        <article class="testimonial" id="card3" style="background-color:#0b4fff;">
+            <h4>David Linkletter</h4>
+            <h6>CTO - ABC Company</h6>
+            <p>"Exactly the professional network I’ve been searching for. I can work and socialize with other
+                freelancers while discovering interesting spaces around the city."</p>
+        </article>
+        <article class="testimonial" id="card4" style="background-color:#ada4db;">
+            <h4>Melissa Hershel</h4>
+            <h6>Data operator - ABC Company</h6>
+            <p>"LaptopFriendly is an awesome service for finding places to get your work done. The crew helped me
+                discover some hidden gems all over the city!"</p>
+        </article>
+        <article class="testimonial" id="card5" style="background-color:#0b4fff;color:white;">
+            <h4>Connie Tucker</h4>
+            <h6>HR Manager - ABC Company</h6>
+            <p>"LaptopFriendly is an awesome service for finding places to get your work done. The crew helped me
+                discover some hidden gems all over the city!LaptopFriendly is an awesome service for finding places
+                to get your work done. The crew helped me
+                discover some hidden gems all over the cityLaptopFriendly is an awesome service for finding places
+                to get your work done. The crew helped me
+                discover some hidden gems all over the city!"</p>
+        </article>
+    </div>
+</div>
 {%endblock%}

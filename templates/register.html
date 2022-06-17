@@ -2,22 +2,32 @@
 
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}Register {% endblock %}
+{% block title %}Register{% endblock %}
+
+{%block head%}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/logging.css')}}">
+{%endblock%}
 
 {%block content%}
- <nav>
-        <a href="{{ url_for('home') }}">FlaskApp</a>
 
-    </nav>
+<div class="form-container container">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="notification container">
+            {{ messages[0] }}. Go to <a href="{{ url_for('login') }}"> login page</a>.
+        </div>
+    {% endif %}
+    {% endwith %}
+    <form action="{{url_for('register')}}" method="post" novalidate class="form form-horizontal" role="form">
 
-{{wtf.quick_form(form, novalidate=True)}}
+            {{form.hidden_tag()}}
+        {{wtf.form_errors(form, hiddens="only")}}
 
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-    <div class="notification container">
-        {{ messages[0] }}. Go to <a href="{{ url_for('login') }}">login page</a>.
-    </div>
-{% endif %}
-{% endwith %}
-
+        {{wtf.form_field(form.name)}}
+        {{wtf.form_field(form.email)}}
+        {{wtf.form_field(form.password)}}
+            <input class="log-button btn btn-dark" type="submit" value="Register">
+    </form>
+</div>
 {%endblock%}

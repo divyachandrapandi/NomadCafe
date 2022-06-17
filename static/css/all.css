@@ -1,0 +1,177 @@
+.all-header{
+
+    font-weight:700;
+    text-align:center;
+    padding:2%;}
+
+
+.cafe-container{
+    display:flex;
+    gap:2rem;
+    font-size:1rem;
+    background-color:black;
+    color:white;
+    margin:5% auto;
+    height:100%;
+    width:60%;
+    padding:2%;
+    }
+
+.image-column{
+    width:100%;
+    flex:0 0 40%;
+    max-width:40%;
+    }
+
+.cafe-image{
+    width:100%;
+    height:15rem;
+    object-fit:cover;
+    margin:2%;
+    border: 2px solid white;
+    }
+
+.cafe-column{
+    width:100%;
+    flex:0 0 60%;
+    max-width:60%;
+    margin:1% 1% 1% 0%;
+    padding-right:5%;
+    }
+
+.cafe-column a:visited, a:link{
+    color:white;
+    }
+
+.cafe-column a:hover{
+    color:yellow;
+    }
+.cafe-column h2{
+     margin-bottom:2%;
+     font-size:1.75rem;
+     }
+
+.cafe-column h6{
+    font-family: 'Noto Serif', serif;
+    font-size:1.5rem;
+     }
+.cafe-column h3{
+         background-color:white;
+         color:black;
+         width:auto;
+         }
+
+.cafe-column p{
+    padding-bottom:0.3%;
+    font-size:1rem;
+    }
+
+@media (max-width: 800.98px)  {
+
+.cafe-container{
+    display:flex;
+    gap:2rem;
+    flex-direction:column;
+    font-size:0.5rem;
+    background-color:black;
+    color:white;
+    margin:5% auto;
+    height:100%;
+    width:90%;
+    padding:2%;
+    justify-content:center;
+    align-items:center;
+    }
+
+
+.image-column{
+    width:100%;
+    flex:1;
+    max-width:60%;
+    }
+
+.cafe-image{
+    width:100%;
+    height:15rem;
+    object-fit:cover;
+    margin:2%;
+    border: 2px solid white;
+    }
+
+    .cafe-column{
+        width:100%;
+        flex:1;
+        text-align:center;
+        margin:1% 1% 1% 0%;
+        }
+
+    .cafe-column h2{
+         margin-bottom:2%;
+         font-size:1rem;
+         }
+
+    .cafe-column h6{
+        font-family: 'Noto Serif', serif;
+        font-size:1rem;
+         }
+
+    .cafe-column h3{
+         background-color:white;
+         color:black;
+         width:auto;
+         }
+
+    .cafe-column p{
+        padding-bottom:5%;
+        font-size:0.75rem;
+        }
+}
+@media (max-width: 991.98px) {
+
+
+    .cafe-column h2{
+         margin-bottom:2%;
+         font-size:1.25rem;
+         }
+
+    .cafe-column h6{
+        font-family: 'Noto Serif', serif;
+        font-size:1.25rem;
+         }
+
+    .cafe-column h3{
+         background-color:white;
+         color:black;
+         width:auto;
+         }
+
+    .cafe-column p{
+        padding-bottom:5%;
+        font-size:1rem;
+        }}
+
+@media (max-width:1200px) and (min-width:991px){
+
+
+    .cafe-column h2{
+         margin-bottom:2%;
+         font-size:1.5rem;
+         }
+
+    .cafe-column h6{
+        font-family: 'Noto Serif', serif;
+        font-size:1rem;
+         }
+
+    .cafe-column h3{
+         background-color:white;
+         color:black;
+         width:auto;
+         }
+
+    .cafe-column p{
+        padding-bottom:5%;
+        font-size:1.25rem;
+        }
+
+}

@@ -1,121 +1,88 @@
 {% extends 'base.html' %}
 {% import "bootstrap/wtf.html" as wtf %}
-{% block title %} cafe Editing {% endblock %}
+{% block title %} Add and Edit Cafe {% endblock %}
+
+{%block head%}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/logging.css')}}">
+    <style>
+        .footer-section{
+            display:none;
+        }
+
+        .form-container{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-align:left;
+            width:80%;
+            height:100%;
+            margin-inline:auto;
+            }
+
+        body > div > div.form-container > form > div:nth-child(2),
+        body > div > div.form-container > form > div:nth-child(3),
+        body > div > div.form-container > form > div:nth-child(4),
+        body > div > div.form-container > form > div:nth-child(5),
+        body > div > div.form-container > form > div:nth-child(6),
+        body > div > div.form-container > form > div:nth-child(7),
+        body > div > div.form-container > form > div:nth-child(8),
+        body > div > div.form-container > form > div:nth-child(9),
+        body > div > div.form-container > form > div:nth-child(10),
+        body > div > div.form-container > form > div:nth-child(11)
+
+            {
+            margin:2% auto;
+            }
+    </style>
+{%endblock%}
 
 {%block content%}
 
 {%if is_edit:%}
-<h1>Update Cafe</h1>
+<div class="add-heading container-fluid"><h1>Update Cafe</h1></div>
 
-<form method="POST" action="{{url_for('update', cafe_id=cafe.id)}}">
-        {{ form.csrf_token }}
-        <p>
-            {{ form.name.label }}
-            {{ form.name(size=20) }}
-        </p>
+<div class="form-container">
+    <form class="form form-horizontal" novalidate role="form" method="POST" action="{{url_for('update', cafe_id=cafe.id)}}">
+        {{form.hidden_tag()}}
+        {{wtf.form_errors(form, hiddens="only")}}
 
-
-        <p>
-            {{ form.map_url.label }}
-        </p>
-        {{ form.map_url(size=20) }}
-
-
-        <p>
-            {{ form.img_url.label }}
-            {{ form.img_url(size=20) }}
-        </p>
-
-        <p>
-            {{ form.location.label }}
-            {{ form.location(size=20) }}
-        </p>
-
-        <p>
-            {{ form.has_sockets.label }} {{ form.has_sockets() }}
-        </p>
-
-        <p>
-            {{ form.has_toilet.label }} {{ form.has_toilet() }}
-        </p>
-
-        <p>
-            {{ form.has_wifi.label }} {{ form.has_wifi() }}
-        </p>
-
-        <p>
-            {{ form.can_take_calls.label }} {{ form.can_take_calls() }}
-        </p>
-
-
-        <p>
-            {{ form.seats.label }}  {{ form.seats(size=20) }}
-        </p>
-
-        <p>
-            {{ form.coffee_price.label }}  ₤{{ form.coffee_price(size=20) }}
-        </p>
-     <p>
-            <input type="submit" value="Submit">
-        </p>
-
+        {{wtf.form_field(form.name)}}
+        {{wtf.form_field(form.map_url)}}
+        {{wtf.form_field(form.img_url)}}
+        {{wtf.form_field(form.location)}}
+        {{wtf.form_field(form.has_sockets)}}
+        {{wtf.form_field(form.has_toilet)}}
+        {{wtf.form_field(form.has_wifi)}}
+        {{wtf.form_field(form.can_take_calls)}}
+        {{wtf.form_field(form.seats)}}
+        {{wtf.form_field(form.coffee_price)}}
+       <input class="log-button btn btn-dark" type="submit" value="Submit">
     </form>
+</div>
+
 {%else:%}
-    <h1>Add a New Cafe</h1>
-
-<form method="POST" action="{{url_for('add_cafe')}}">
-        {{ form.csrf_token }}
-        <p>
-            {{ form.name.label }}
-            {{ form.name(size=20) }}
-        </p>
+<div class="add-heading container-fluid"><h1>Add A new Cafe</h1></div>
 
 
-        <p>
-            {{ form.map_url.label }}
-        </p>
-        {{ form.map_url(size=20) }}
+    <div class="form-container">
+    <form class="form form-horizontal" novalidate role="form" method="POST" action="{{url_for('add_cafe')}}">
+        {{form.hidden_tag()}}
+        {{wtf.form_errors(form, hiddens="only")}}
 
-
-        <p>
-            {{ form.img_url.label }}
-            {{ form.img_url(size=20) }}
-        </p>
-
-        <p>
-            {{ form.location.label }}
-            {{ form.location(size=20) }}
-        </p>
-
-        <p>
-            {{ form.has_sockets.label }} {{ form.has_sockets() }}
-        </p>
-
-        <p>
-            {{ form.has_toilet.label }} {{ form.has_toilet() }}
-        </p>
-
-        <p>
-            {{ form.has_wifi.label }} {{ form.has_wifi() }}
-        </p>
-
-        <p>
-            {{ form.can_take_calls.label }} {{ form.can_take_calls() }}
-        </p>
-
-
-        <p>
-            {{ form.seats.label }}  {{ form.seats(size=20) }}
-        </p>
-
-        <p>
-            {{ form.coffee_price.label }}  ₤{{ form.coffee_price(size=20) }}
-        </p>
-     <p>
-            <input type="submit" value="Submit">
-        </p>
-
+                {{wtf.form_field(form.name)}}
+                {{wtf.form_field(form.map_url)}}
+                {{wtf.form_field(form.img_url)}}
+                {{wtf.form_field(form.location)}}
+                {{wtf.form_field(form.has_sockets)}}
+                {{wtf.form_field(form.has_toilet)}}
+                {{wtf.form_field(form.has_wifi)}}
+                {{wtf.form_field(form.can_take_calls)}}
+                {{wtf.form_field(form.seats)}}
+                {{wtf.form_field(form.coffee_price)}}
+       <input class="log-button btn btn-dark" type="submit" value="Submit">
     </form>
+</div>
 {%endif%}
 
 {% endblock %}

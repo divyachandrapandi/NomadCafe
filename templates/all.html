@@ -1,20 +1,47 @@
 {% extends 'base.html' %}
+{%block head%}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/all.css')}}">
+    {%endblock%}
 {%block content%}
-<h1>All cafes</h1>
-{%for cafe in cafes:%}
-<div class="container" style="background-color:yellow; font-size:1.5rem; border:5px solid black; margin:5px 25px;">
+<div class="all-header">
+    <h1>Cafes at your location</h1>
+    <h6>Listed the cafe which have comfy seatings and facilitate work with wifi, power sockets</h6>
+</div>
 
-    <h4> {{cafe.id}}CAFE NAME: <a href="{{url_for('show_cafe', cafe_id = cafe.id)}}">{{cafe.name}}</a></h4>
-    <h6>cafe map location: {{cafe.map_url}}</h6>
-    <h6>cafe location: {{cafe.location}}</h6>
-    <h6>cafe image {{cafe.img_url}}</h6>
-    <h6>cafe has sockets {{cafe.has_sockets}}</h6>
-    <h6>cafe allow take calls: {{cafe.can_take_calls}}</h6>
-    <h6>cafe has wifi: {{cafe.has_wifi}}</h6>
-    <h6>cafe has toilet: {{cafe.has_toilet}}</h6>
-    <h6>coffee price: {{cafe.coffee_price}}</h6>
-    <h6>seats: {{cafe.seats}}</h6>
+{%for cafe in pages.items:%}
+<div class="cafe-container container" >
+    <div class="image-column">
+        <img class="cafe-image" src="{{cafe.img_url}}"/>
+    </div>
+    <div class="cafe-column">
+        <h2><a href="{{url_for('show_cafe', cafe_id = cafe.id)}}">{{cafe.name}}</a></h2>
+        <h6>{{cafe.location}}</h6>
+        <p>A cup of Coffee: </p>
+        <h3>{{cafe.coffee_price}}</h3>
+        <h6>cafe has sockets {%if cafe.has_sockets == true%} tick{%else%} cross{%endif%}</h6>
+        <h6>cafe has wifi:{%if cafe.has_wifi == true%} tick{%else%} cross{%endif%} </h6>
+        <h6>cafe has toilet: {%if cafe.has_toilet == true%} tick{%else%} cross{%endif%}</h6>
+    </div>
 
 </div>
-  {%endfor%}
+ {%endfor%}
+<nav aria-label="...">
+
+  <ul class="pagination">
+    <li class="page-item {%if  not pages.has_prev %} disabled {%endif%}">
+      <a class="page-link" href="./{{pages.prev_num}}">Previous</a>
+    </li>
+      {%for page in pages.iter_pages(left_edge=2, right_edge=2, left_current=1, right_current=1):%}
+      {%if page:%}
+    <li class="page-item"><a class="page-link" href="{{url_for('all_cafe', page_num=page)}}">{{page}}</a></li>
+      {%else%}
+      ...
+      {%endif%}
+      {%endfor%}
+    <li class="page-item {%if  not pages.has_next %} disabled {%endif%}">
+      <a class="page-link" href="./{{pages.next_num}}">Next</a>
+    </li>
+  </ul>
+</nav>
 {%endblock%}

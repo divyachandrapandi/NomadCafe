@@ -2,55 +2,39 @@
 
 {% import "bootstrap/wtf.html" as wtf %}
 
-{%block title%} Welcome Login page{%endblock%}
+{% block title %}Login{% endblock %}
 
-{% block content %}
-
- <nav>
-        <a href="{{ url_for('home') }}">FlaskApp</a>
-
-    </nav>
-<div class="container">
-    <h1>Login</h1>
-    {{ wtf.quick_form(form) }}
-
-</div>
-<div class="field" style="margin-left:50px;">
-
-    <input type="checkbox" name="remember">
-    <label>
-        Remember me
-    </label>
-</div>
-
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-<div class="notification is-danger">
-    {{ messages[0] }}
-</div>
-{% endif %}
-{% endwith %}
-
+{%block head%}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/logging.css')}}">
 {%endblock%}
-<!--	</body>-->
-<!--</html>-->
 
-<!--			<form method="post">-->
-<!--				{{form.csrf_token}}-->
-<!--				<p>-->
-<!--         		   {{ form.email.label }}-->
-<!--         		   {{ form.email(size=15) }}-->
-<!--        		</p>-->
-<!--				<br>-->
-<!--				<p>-->
-<!--         		   {{ form.password.label }}-->
-<!--         		   {{ form.password(size=15) }}-->
-<!--        		</p>-->
+{%block content%}
 
-<!--				<p>-->
-<!--					{{form.submit}}-->
-<!--&lt;!&ndash;            		<input type="submit" value="LogIn">&ndash;&gt;-->
-<!--       			 </p>-->
-<!--			</form>-->
-<!--			action="{{ url_for('loginpage')}}" -->
-<!-- This is where our form will go. -->
+<div class="form-container container">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="notification container">
+            {{ messages[0] }}. Go to <a href="{{ url_for('register') }}"> Register if not registered</a>.
+        </div>
+    {% endif %}
+    {% endwith %}
+    <form action="{{url_for('login')}}" method="post" novalidate class="form form-horizontal" role="form">
+
+            {{form.hidden_tag()}}
+        {{wtf.form_errors(form, hiddens="only")}}
+
+
+        {{wtf.form_field(form.email)}}
+        {{wtf.form_field(form.password)}}
+            <div class="field">
+
+                <input type="checkbox" name="remember">
+                <label>
+                    Remember me
+                </label>
+            </div>
+            <input class="log-button btn btn-dark" type="submit" value="Login">
+    </form>
+</div>
+{%endblock%}

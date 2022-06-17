@@ -1,14 +1,348 @@
-/*// X-Small devices (portrait phones, less than 576px)
-@media (max-width: 575.98px) { ... }
 
+/* FONT FAMILY
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Noto Serif', serif;
+    */
+body{
+    font-family: 'Noto Serif', serif;
+    }
+h1{
+    font-family: 'Noto Serif', serif;
+    font-size:4rem;
+    }
+
+h6{
+    font-family: 'Noto Sans', sans-serif;
+    font-size:1.5rem;
+    }
+
+.cafe-navbar{
+    position:sticky;
+    font-family: 'Noto Sans', sans-serif;
+    padding-bottom:5px;
+    }
+
+.nav-container{
+    margin-inline: 25px;}
+.cafe-brand{
+    text-transform:capitalize;
+    font-size:1.75rem;}
+
+.nav-item{
+    margin-inline:1.75rem;
+    }
+
+.nav-link{
+    font-size:1.15rem;
+    }
+/* HEADING */
+
+.title-section{
+    display:flex;
+    position:relative;
+    width:100%;
+    height:500px;
+    margin-inline:auto;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.title-section:before{
+    content:"";
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    opacity:0.7;
+    background-image:url("../images/cafe2.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position: center;
+}
+
+.heading{
+    position:relative;
+    text-align:center;
+    color:black;
+    font-weight:900;}
+
+.explore-btn{
+    margin: 15px auto;
+    font-size:2rem;}
+
+
+/* FEATURES */
+
+.feature-section{
+    height:auto;
+    text-align:center;
+    padding:3% 10% 7%;
+    }
+
+.features-col{
+    padding:5% 2%;
+  }
+
+.features-col h3{
+    font-family: 'Noto Sans', sans-serif;
+    font-weight:600;
+    }
+
+.feature-icon{
+    font-size:2rem;
+    padding-bottom:5%;
+    }
+
+/*TESTIMONIALS*/
+
+.testimonial-section h1{
+    font-family: 'Noto Sans', sans-serif;
+    font-size:2rem;
+    font-weight:800;
+    text-align:center;
+    text-transform:uppercase;
+        }
+/*for alternate way of grid - just specify grid gap and display*/
+
+.testimonial-card{
+    display:grid;
+    gap:1.5rem;
+    padding:2rem;
+    width:95%:
+    margin-inline:auto;
+}
+
+/* to all big screen*/
+/*specify each quotation a row, card1... are the row name to child just specify dont worry*/
+.testimonial-card{
+    grid-template-areas:
+        'card1'
+        'card2'
+        'card3'
+        'card4'
+        'card5';}
+
+.testimonial-card #card1 {grid-area:card1;}
+.testimonial-card #card2 {grid-area:card2;}
+.testimonial-card #card3 {grid-area:card3;}
+.testimonial-card #card4 {grid-area:card4;}
+.testimonial-card #card5 {grid-area:card5;}
+
+@media (min-width:900px){
+    .testimonial-card{
+        grid-template-areas:
+            'card1 card1 card2 card5'
+            'card3 card4 card4 card5';}
+
+    }
+
+@media (min-width:600px) and (max-width:900px){
+ .testimonial-card{
+        grid-template-areas:
+            'card1 card1'
+            'card2 card5'
+            'card3 card5'
+            'card4 card4';}
+}
+
+/*testimonial card styling*/
+#card1, #card2, #card3, #card4, #card5{
+    padding:1rem;
+    box-shadow:3px 3px grey;
+    }
+
+.testimonial-card p{
+    text-align:justify;}
+
+/*CONVENTIONAL GRID LAYOUT*/
+/*
+.testimonial-card{
+    grid-template-columns:repeat(4,1fr);}
+
+.testimonial-card #card1{
+    grid-column-start:1;
+    grid-column-end:3;
+    }
+
+.testimonial-card #card4{
+    grid-column-start:2;
+    grid-column-end:4;
+    }
+
+.testimonial-card #card5{
+        grid-column-start: 4;
+        grid-row-start:1;
+        grid-row-end: span 2;}
+}*/
+
+/*FOOTER*/
+.footer-section{
+position:sticky;
+bottom:0;
+left:0;
+width:100%;
+padding:2% 2%;
+
+    }
+
+.footer-section a{
+    color:white;
+    }
+
+.footer-nav{
+    display:flex;
+    gap:0.5rem;
+    justify-content:space-evenly;
+    text-align:center;
+    width:50%;
+    margin-inline:auto;
+    }
+
+.footer-nav li{
+    flex:1;
+    }
+
+.footer-nav li a{
+    font-size:1.75rem;
+    }
+
+.footer-section p {
+    font-size:1rem;
+    }
+
+@media (max-width: 1199.98px) {
+     .grid-card{
+        grid-template-areas:'card1 card2 card3'
+                            'card4 card5';
+                            }
+ }
+
+@media (max-width: 575.98px)  {
+
+     h1{
+        font-size:2.5rem;
+        }
+
+    h6{
+        font-size:1.5rem;
+        }
+
+    .cafe-navbar{
+        position:static;
+        }
+
+    .nav-container{
+        margin-inline: 20px;
+        }
+
+    .cafe-brand{
+        text-tranform:capitalize;
+        font-size:1.5rem;}
+
+    .nav-item{
+        margin-inline:1.5rem;
+        }
+
+    .nav-link{
+        font-size:1.5rem;
+        }
+
+    .title-section{
+        height:400px;
+    }
+
+    .explore-btn{
+        font-size:1.5rem;
+        }
+
+    .testimonial-section h1{
+        font-size:1rem;
+        }
+
+    .footer-nav li a{
+    font-size:1rem;
+    }
+
+    .footer-section p{
+        font-size:0.65rem;}
+}
+
+/* FEATURES */
+
+/*
 // Small devices (landscape phones, less than 768px)
 @media (max-width: 767.98px) { ... }
+*/
 
-// Medium devices (tablets, less than 992px)
-@media (max-width: 991.98px) { ... }
+/*Tablets*/
+@media (max-width:1200px) and (min-width:991px){
+    h1{
+        font-size:3rem;
+    }
 
+    h6 {
+        font-size:1.25rem;}
+    }
+
+@media (max-width: 991.98px) {
+    h1{
+        font-size:2rem;
+        }
+
+    h6{
+        font-size:1rem;
+        }
+
+    .cafe-navbar{
+        position:static;
+        }
+
+    .nav-container{
+        margin-inline: 15px;
+        }
+
+    .cafe-brand{
+        text-tranform:capitalize;
+        font-size:1rem;}
+
+    .nav-item{
+        margin-inline:1rem;
+        }
+
+    .nav-link{
+        font-size:1rem;
+        }
+
+    .title-section{
+        height:300px;
+    }
+
+    .explore-btn{
+        font-size:1rem;
+        }
+
+    .features-col h3{
+        font-size:1.2rem;
+        }
+
+    .feature-icon{
+        font-size:1.5rem;
+
+        }
+
+    .testimonial-section h1{
+        font-size:1.25rem;
+
+        }
+}
+
+
+/*
 // Large devices (desktops, less than 1200px)
-@media (max-width: 1199.98px) { ... }
+
 
 // X-Large devices (large desktops, less than 1400px)
 @media (max-width: 1399.98px) { ... }

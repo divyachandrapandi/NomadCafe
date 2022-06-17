@@ -1,0 +1,59 @@
+.map-button{
+    margin-top:2%;
+    font-size:1.5rem;
+    padding: 1% 7%;
+    }
+
+.button-container{
+    text-align:center;
+    margin:5% auto;
+    }
+
+.cafe-details{
+    text-align:center;
+    background-color:black;
+    color:white;
+    padding:5%;
+    }
+
+.cafe-part-one{
+    margin:2%;
+    }
+
+cafe-part-two{
+    margin:1% auto;
+    text-align:center;
+    width:15%;
+    }
+
+.row{
+    width:100%;
+    max-width:70%;
+    margin-top:2%;
+    margin-inline:auto;
+    text-align:center;
+    }
+
+.col-6{
+    border:1px solid white;
+    padding:1%;
+    }
+
+.map{
+     border:0;
+     width:90%;
+     height:25rem;
+     margin:1% auto;
+    }
+
+@media (max-width: 575.98px) {
+    .map-button{
+        font-size:1rem;
+        }
+}
+
+@media (max-width: 1199.98px) and (min-width:575px){
+    .map-button{
+        font-size:1.25rem;
+        }
+}

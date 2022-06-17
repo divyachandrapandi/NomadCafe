@@ -6,6 +6,7 @@ from flask_bootstrap import Bootstrap
 import os
 from forms import AddCafeForm, RegisterForm, LoginForm
 from dotenv import load_dotenv
+from flask import session
 
 app = Flask(__name__)
 
@@ -61,15 +62,20 @@ class User(UserMixin, db.Model):
 @app.route('/')
 def home():
     # add button for show_cafe
+
     return render_template('index.html')
 
 
 # TODO -1 GET ALL CAFE IN /all USING QUERY.ALL AND GET METHODS
+ROWS_PER_PAGE=5
+@app.route('/all/<int:page_num>', methods=['GET', 'POST'])  # get
+def all_cafe(page_num):
+    #
+    # cafes=Cafe.query.all()
 
-@app.route('/all', methods=['GET', 'POST'])  # get
-def all_cafe():
-    cafes = Cafe.query.all()
-    return render_template('all.html', cafes=cafes)
+    pages = Cafe.query.paginate(page=page_num, per_page = ROWS_PER_PAGE, error_out=True )
+    # Arguments: page - number ofpages to display, per_page = post per page ,pages -posting the cafes to template
+    return render_template('all.html', pages=pages)
 
 
 # TODO -2 GET A CAFE ON CLICKING CAFE NAME, TAKES TO SEPEARATE PAGE TO SHOW INDIVIDUAL CAFE DETAILS
@@ -233,6 +239,9 @@ def login():
 
     return render_template('login.html', form=form)
 
+@app.before_request
+def make_session_permanent():
+    session.permanent =True
 
 @app.route('/logout')
 @login_required
@@ -242,6 +251,6 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(host="192.168.68.104", port=5000, debug=True)
+    app.run(host="192.168.68.107", port=5000, debug=True)
 
     # flash wrong url, cafe deleted cafe updated, registered, logout login

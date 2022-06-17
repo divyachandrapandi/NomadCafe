@@ -1,0 +1,58 @@
+.notification{
+    display:flex;
+    background-color:#00adad;
+    color:white;
+    padding:4% 1%;
+    justify-content:center;
+    align-items:center;
+    font-size:1.05rem;
+}
+
+.notification a:link, .notification a:visited{
+    color:black;
+    }
+
+.form-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:left;
+    width:50%;
+    height:80vh;
+    margin:auto;
+    }
+
+.form{
+    flex:1;
+    }
+
+body > div > div > form > div:nth-child(2),
+body > div > div > form > div:nth-child(3),
+body > div > div > form > div:nth-child(4),
+body > div > div > form > div:nth-child(5)
+body > div > div > form > div:nth-child(6)
+body > div > div > form > div:nth-child(7)
+body > div > div > form > div:nth-child(8)
+body > div > div > form > div:nth-child(9)
+    {
+    margin:2% auto;
+    }
+
+.log-button{
+    text-align:center;
+    margin:2% auto;
+    }
+
+/*Making.html*/
+.add-heading{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    height:20vh;
+    width:100%;
+    background-color:black;
+    color:white;}
+
+.add-heading h1{
+    font-size:3rem;}
