@@ -7,6 +7,7 @@ import os
 from forms import AddCafeForm, RegisterForm, LoginForm
 from dotenv import load_dotenv
 from flask import session
+import psycopg2
 # import re
 app = Flask(__name__)
 
