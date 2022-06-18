@@ -45,7 +45,7 @@ class Cafe(db.Model):
     seats = db.Column(db.String(250), nullable=True)
     coffee_price = db.Column(db.String(250), nullable=True)
 
-
+db.create_all()
 # The UserMixin will add Flask-Login attributes to the model so that Flask-Login will be able to work with it
 class User(UserMixin, db.Model):
 
@@ -55,7 +55,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(250), nullable=False, unique=True)
 
 
-# db.create_all()
+db.create_all()
 # INSERT THE ENTRIES TO CREATE A TABLE POPULATED WITH CAFE DETAILS
 
 
