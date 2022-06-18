@@ -55,7 +55,7 @@ class Cafe(db.Model):
 db.create_all()
 
 class User(UserMixin, db.Model):
-     __tablename__ = "users"
+    __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), nullable=False)
     password = db.Column(db.String(250), nullable=False)
@@ -233,3 +233,4 @@ def logout():
 if __name__ == "__main__":
     app.run(host="192.168.68.107", port=5000, debug=True)
 
+#
