@@ -39,7 +39,7 @@ def load_user(user_id):
 class Cafe(db.Model):
     __tablename__ = "cafe_posts"
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(250), nullable=False, unique=True)
+    name = db.Column(db.String(250), nullable=False)
     map_url = db.Column(db.String(500), nullable=False)
     img_url = db.Column(db.String(500), nullable=False)
     location = db.Column(db.String(250), nullable=False)
@@ -51,6 +51,7 @@ class Cafe(db.Model):
     coffee_price = db.Column(db.String(250), nullable=True)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))  
     author = relationship('User', back_populates="posts") 
+    
 db.create_all()
 
 class User(UserMixin, db.Model):
