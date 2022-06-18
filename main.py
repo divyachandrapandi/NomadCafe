@@ -7,11 +7,11 @@ import os
 from forms import AddCafeForm, RegisterForm, LoginForm
 from dotenv import load_dotenv
 from flask import session
-import psycopg2
+
 # import re
 app = Flask(__name__)
 
-load_dotenv(r"E:\PYTHON_BOOTCAMP_Dr_ANGELA_YU\NomadCafe\.env")
+# load_dotenv(r"E:\PYTHON_BOOTCAMP_Dr_ANGELA_YU\NomadCafe\.env")
 app.config['SECRET_KEY'] = os.environ.get("SECURITY_KEY")
 
 # FOR BOOTSTRAP EXTENSION
