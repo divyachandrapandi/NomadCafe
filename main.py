@@ -7,6 +7,10 @@ import os
 from forms import AddCafeForm, RegisterForm, LoginForm
 from dotenv import load_dotenv
 from flask import session
+from functools import wraps
+from flask import abort
+from sqlalchemy.orm import relationship
+from sqlalchemy.ext.declarative import declarative_base
 
 # import re
 app = Flask(__name__)
@@ -40,7 +44,7 @@ def load_user(user_id):
 
 
 class Cafe(db.Model):
-
+    __tablename__ = "cafe_posts"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), nullable=False, unique=True)
     map_url = db.Column(db.String(500), nullable=False)
@@ -52,18 +56,21 @@ class Cafe(db.Model):
     can_take_calls = db.Column(db.Boolean, default=False, nullable=False)
     seats = db.Column(db.String(250), nullable=True)
     coffee_price = db.Column(db.String(250), nullable=True)
-
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))  # author_id is foreign key
+    author = relationship('User', back_populates="posts") 
+db.create_all()
 
 # The UserMixin will add Flask-Login attributes to the model so that Flask-Login will be able to work with it
 class User(UserMixin, db.Model):
-
+     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), nullable=False)
     password = db.Column(db.String(250), nullable=False)
     email = db.Column(db.String(250), nullable=False, unique=True)
+    posts = relationship('Cafe', back_populates="author")
 
 
-# db.create_all()
+db.create_all()
 # INSERT THE ENTRIES TO CREATE A TABLE POPULATED WITH CAFE DETAILS
 
 
