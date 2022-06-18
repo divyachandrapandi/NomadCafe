@@ -7,7 +7,7 @@ import os
 from forms import AddCafeForm, RegisterForm, LoginForm
 from dotenv import load_dotenv
 from flask import session
-
+import re
 app = Flask(__name__)
 
 load_dotenv(r"E:\PYTHON_BOOTCAMP_Dr_ANGELA_YU\NomadCafe\.env")
@@ -16,7 +16,14 @@ app.config['SECRET_KEY'] = os.environ.get("SECURITY_KEY")
 # FOR BOOTSTRAP EXTENSION
 Bootstrap(app)
 
+uri = os.getenv("DATABASE_URL")  # or other relevant config var
+if uri and uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
+# rest of connection code using the connection string `uri`
+
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL', 'sqlite:///cafes.db')
+
+
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
