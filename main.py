@@ -6,11 +6,6 @@ from flask_bootstrap import Bootstrap
 import os
 from forms import AddCafeForm, RegisterForm, LoginForm
 from dotenv import load_dotenv
-from flask import session
-from functools import wraps
-from flask import abort
-from sqlalchemy.orm import relationship
-from sqlalchemy.ext.declarative import declarative_base
 
 
 app = Flask(__name__)
@@ -26,7 +21,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASES_URL', 'sqlite:
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
-base = declarative_base()
+
 login_manager = LoginManager(app)
 
 
@@ -37,7 +32,7 @@ def load_user(user_id):
 
 
 class Cafe(db.Model):
-    __tablename__ = "cafe_posts"
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), nullable=False)
     map_url = db.Column(db.String(500), nullable=False)
@@ -49,18 +44,17 @@ class Cafe(db.Model):
     can_take_calls = db.Column(db.Boolean, default=False, nullable=False)
     seats = db.Column(db.String(250), nullable=True)
     coffee_price = db.Column(db.String(250), nullable=True)
-    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))  
-    author = relationship('User', back_populates="posts") 
+
     
 db.create_all()
 
 class User(UserMixin, db.Model):
-    __tablename__ = "users"
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), nullable=False)
     password = db.Column(db.String(250), nullable=False)
     email = db.Column(db.String(250), nullable=False, unique=True)
-    posts = relationship('Cafe', back_populates="author")
+
 
 
 db.create_all()
@@ -231,6 +225,6 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="192.168.68.107", port=5000,debug=True)
 
-#host="192.168.68.107", port=5000,
+#
