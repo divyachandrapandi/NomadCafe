@@ -12,19 +12,14 @@ from flask import abort
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
-# import re
+
 app = Flask(__name__)
 
-# load_dotenv(r"E:\PYTHON_BOOTCAMP_Dr_ANGELA_YU\NomadCafe\.env")
 app.config['SECRET_KEY'] = os.environ.get("SECURITY_KEY")
 
-# FOR BOOTSTRAP EXTENSION
+
 Bootstrap(app)
 
-# uri = os.getenv("DATABASE_URL")  # or other relevant config var
-# if uri and uri.startswith("postgres://"):
-#     uri = uri.replace("postgres://", "postgresql://", 1)
-# # rest of connection code using the connection string `uri`
 
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASES_URL', 'sqlite:///cafes.db')
 
@@ -35,8 +30,6 @@ base = declarative_base()
 login_manager = LoginManager(app)
 
 
-#  you need to specify the user loader. A user loader tells Flask-Login how to find a specific user from the
-#  ID that is stored in their session cookie.
 @login_manager.user_loader
 def load_user(user_id):
     # since the user_id is just the primary key of our user table, use it in the query for the user
@@ -56,11 +49,10 @@ class Cafe(db.Model):
     can_take_calls = db.Column(db.Boolean, default=False, nullable=False)
     seats = db.Column(db.String(250), nullable=True)
     coffee_price = db.Column(db.String(250), nullable=True)
-    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))  # author_id is foreign key
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))  
     author = relationship('User', back_populates="posts") 
 db.create_all()
 
-# The UserMixin will add Flask-Login attributes to the model so that Flask-Login will be able to work with it
 class User(UserMixin, db.Model):
      __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
@@ -71,44 +63,38 @@ class User(UserMixin, db.Model):
 
 
 db.create_all()
-# INSERT THE ENTRIES TO CREATE A TABLE POPULATED WITH CAFE DETAILS
+
 
 
 @app.route('/')
 def home():
-    # add button for show_cafe
+    
 
     return render_template('index.html')
 
 
-# TODO -1 GET ALL CAFE IN /all USING QUERY.ALL AND GET METHODS
 ROWS_PER_PAGE=5
 @app.route('/all/<int:page_num>', methods=['GET', 'POST'])  # get
 def all_cafe(page_num):
-    #
-    # cafes=Cafe.query.all()
-
     pages = Cafe.query.paginate(page=page_num, per_page = ROWS_PER_PAGE, error_out=True )
-    # Arguments: page - number ofpages to display, per_page = post per page ,pages -posting the cafes to template
+    
     return render_template('all.html', pages=pages)
 
 
-# TODO -2 GET A CAFE ON CLICKING CAFE NAME, TAKES TO SEPEARATE PAGE TO SHOW INDIVIDUAL CAFE DETAILS
+
 @app.route('/cafe/<int:cafe_id>', methods=['GET', 'POST'])
 def show_cafe(cafe_id):
     cafe = Cafe.query.get(cafe_id)
     return render_template('cafe.html', cafe=cafe)
 
 
-# TODO -3 TO ADD CAFE USING WTFORMS BOOTSTRAP, CREATE FORM.PY AND USE POST METHOD RECEIVE THE DATA AND ADD TO DB &
-#  COMMIT
+
 @app.route('/add', methods=["GET", "POST"])
 @login_required
 def add_cafe():
     form = AddCafeForm()
     if form.validate_on_submit():
-        # SINCE DB HAS NO BOOLEAN TYPE, 1 IS FOR tRUE, 0 IS FALSE, IN WTFORM BOOLEAN IS T/F HENCE CONVERTING TRUE TO
-        # 1 AS THE DB CAN UNDERSTAND
+       
         if form.has_sockets.data:
             sockets = 1
         else:
@@ -158,18 +144,6 @@ def update(cafe_id):
     # to pre-populate the previous data of cafe
     edit_form = AddCafeForm(obj=cafe)
 
-    # name=cafe.name,
-    #     map_url=cafe.map_url,
-    #
-    #     location=cafe.location,
-    #     img_url=cafe.img_url,
-    #     has_sockets=cafe.has_sockets,
-    #     has_wifi=cafe.has_wifi,
-    #     has_toilet=cafe.has_toilet,
-    #     can_take_calls=cafe.can_take_calls,
-    #     seats=cafe.seats,
-    #     coffee_price=cafe.coffee_price
-    # )
     if edit_form.validate_on_submit():
         cafe.name = edit_form.name.data
         cafe.map_url = edit_form.map_url.data
@@ -206,10 +180,8 @@ def register():
         email = form.email.data
         password = form.password.data
 
-        user = User.query.filter_by(
-            email=email).first()  # if this returns a user, then the email already exists in database
-
-        if user:  # if a user is found, we want to redirect back to signup page so user can try again
+        user = User.query.filter_by(email=email).first() 
+        if user:  
             flash('Email address already exists')
             return redirect(url_for('register'))
 
@@ -236,27 +208,19 @@ def login():
         user = User.query.filter_by(email=email).first()
         name = user.name
 
-        # check if the user actually exists
-        # take the user-supplied password, hash it, and compare it to the hashed password in the database
         if not user:
             flash("Email Doesnot exist, Please check your data")
             return redirect(url_for('login'))
         if not check_password_hash(user.password, password):
             flash("Incorrect Password, Check again!")
             return redirect(url_for('login'))
-        # if the user doesn't exist or password is wrong, reload the page
-
-        # if the above check passes, then we know the user has the right credentials
-        # Finally, add the login_user function before redirecting to the profile page to create the session:
+       
         login_user(user, remember=remember)
-        # if the above check passes, then we know the user has the right credentials
+
         return render_template('index.html', name=current_user.name)
 
     return render_template('login.html', form=form)
 
-@app.before_request
-def make_session_permanent():
-    session.permanent =True
 
 @app.route('/logout')
 @login_required
@@ -268,4 +232,3 @@ def logout():
 if __name__ == "__main__":
     app.run(host="192.168.68.107", port=5000, debug=True)
 
-    # flash wrong url, cafe deleted cafe updated, registered, logout login
