@@ -19,9 +19,12 @@
         <h6>{{cafe.location}}</h6>
         <p>A cup of Coffee: </p>
         <h3>{{cafe.coffee_price}}</h3>
-        <h6>cafe has sockets {%if cafe.has_sockets == true%} tick{%else%} cross{%endif%}</h6>
-        <h6>cafe has wifi:{%if cafe.has_wifi == true%} tick{%else%} cross{%endif%} </h6>
-        <h6>cafe has toilet: {%if cafe.has_toilet == true%} tick{%else%} cross{%endif%}</h6>
+        <h6>Power sockets <i class="fa-solid fa-plug"></i>{%if cafe.has_sockets == true%}
+            <span style="color:green;">✔</span>{%else%} <span style="color:red;">❌</span>{%endif%}</h6>
+        <h6>Wifi <i class="fa-solid fa-wifi"></i> {%if cafe.has_wifi == true%}
+            <span style="color:green;">✔</span>{%else%} <span style="color:red;">❌</span>{%endif%} </h6>
+        <h6>Restroom <i class="fa-solid fa-restroom"></i> {%if cafe.has_toilet == true%}
+            <span style="color:green;">✔</span>{%else%} <span style="color:red;">❌</span>{%endif%}</h6>
     </div>
 
 </div>
