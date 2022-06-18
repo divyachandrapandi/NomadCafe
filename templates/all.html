@@ -15,7 +15,7 @@
         <img class="cafe-image" src="{{cafe.img_url}}"/>
     </div>
     <div class="cafe-column">
-        <h2><a href="{{url_for('show_cafe', cafe_id = cafe.id)}}">{{cafe.name}}</a></h2>
+        <h2><a class="cafe-link" href="{{url_for('show_cafe', cafe_id = cafe.id)}}">{{cafe.name}}</a></h2>
         <h6>{{cafe.location}}</h6>
         <p>A cup of Coffee: </p>
         <h3>{{cafe.coffee_price}}</h3>

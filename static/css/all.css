@@ -39,7 +39,7 @@
     padding-right:5%;
     }
 
-.cafe-column a:visited, a:link{
+.cafe-column cafe-link:visited, cafe-link:link{
     color:white;
     }
 
